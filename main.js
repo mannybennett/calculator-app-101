@@ -1,4 +1,4 @@
-// These variable hold the numbers we want to do operations on and the name of the operation we want to perform.
+// These variables hold the numbers we want to do operations on and the name of the operation we want to perform.
 // They are expected to change so we use the "let" keyword.
 let firstNum = null
 let secondNum = null
@@ -28,34 +28,41 @@ const subtract = (numA, numB) => {
 }
 
 // These variables are already defined but that don't point to functions. It's up to you to build the functions to complete your calculator use:
+// Open up the inspector tool in Chrome and select the Console tab to see what this functions is "logging out" to the console.
 
+// * to get a product then return it
 const multiply = (numA, numB) => {
-  // * to get a product then return it
-  // Open up the inspector tool in Chrome and select the Console tab to see what this functions is "logging out" to the console.
-  console.log(numA, numB)
+  const product = numA * numB
+  return product
 }
 
-const divide = null
 // / to get a quotient,
+const divide = (numA, numB) => {
+  const quotient = numA / numB
+  return quotient
+}
 
-const modulus = null
 // and % to get a remainder.
+const modulus = (numA, numB) => {
+  const remainder = numA % numB
+  return remainder
+}
 
 // This function changes the "operation" variable to be equal to the "id" of the button we choose on the web page.
+// Use your Chrome Inspector Tool > Console Tab to see the "operation" that's logged
 const changeOperation = (chosenOperation) => {
   operation = chosenOperation
-  // Use your Chrome Inspector Tool > Console Tab to see the "operation" that's logged
   console.log(operation)
 }
 
 // In order to show the user their results we have to access the DOM and stick in the value
+// access the DOM by writing "document" then use the method "getElementById" and pass it the id, "result".
 const putResultInElement = (operationResults) => {
-  // access the DOM by writing "document" then use the method "getElementById" and pass it the id, "result".
   document.getElementById("result").innerHTML = "Results: " + operationResults
+}
 
   // Remember, each element has built in properties like "innerHTML" which we can change to anything we like. 
   // Here we give it a string: "Results: " and add the value of the operation to it.
-}
 
 // The function uses the value of "operation" variable to determine which operation function it should use on the number: add, subtract, multiply, divide, or modulus
 const equals = () => {
@@ -64,11 +71,11 @@ const equals = () => {
     break;
     case "subtraction": putResultInElement(subtract(firstNum, secondNum)) 
     break;
-    case "multiplication": multiply(firstNum, secondNum) 
+    case "multiplication": putResultInElement(multiply(firstNum, secondNum))
     break;
-    case "division": console.log(divide(firstNum, secondNum)) 
+    case "division": putResultInElement(divide(firstNum, secondNum)) 
     break;
-    case "modulus": console.log(modulus(firstNum, secondNum)) 
+    case "modulus": putResultInElement(modulus(firstNum, secondNum)) 
     break;
     default: "Choose an operation"
   }
